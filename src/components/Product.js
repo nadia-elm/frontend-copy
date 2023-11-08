@@ -40,7 +40,9 @@ const Product = ({ image_url, name, price, id }) => {
     }
 
     try {
-      const url = 'http://localhost:3001/users/favorites';
+      // const url = 'http://localhost:3001/users/favorites';
+      const url = 'https://backend-copy-v28b.onrender.com/users/favorites';
+
       const headers = {
         Authorization: `Bearer ${localStorage.getItem('token')}`,
       };
