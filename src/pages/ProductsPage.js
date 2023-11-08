@@ -5,7 +5,9 @@ import { PageHero, Product } from '../components';
 
 const ProductsPage = ({}) => {
   const [products, setProducts] = useState([]);
-  const url = 'http://localhost:3001/products';
+  // const url = 'http://localhost:3001/products';
+  const url = 'https://backend-copy-v28b.onrender.com/users/favorites';
+
   const getProducts = async (url) => {
     try {
       const result = await axios.get(url);
