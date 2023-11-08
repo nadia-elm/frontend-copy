@@ -23,7 +23,9 @@ const Register = () => {
     e.preventDefault();
     try {
       const response = await axios.post(
-        'http://localhost:3001/users/register',
+        // 'http://localhost:3001/users/register',
+          'https://backend-copy-v28b.onrender.com/users/register',
+
         formData
       );
       if (response.data && response.data.token && response.data.user) {
