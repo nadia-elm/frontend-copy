@@ -6,7 +6,9 @@ import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
 // const url = `https://course-api.com/react-store-single-product?id=`;
-const url = 'http://localhost:3001/products/';
+// const url = 'http://localhost:3001/products/';
+      const url = 'https://backend-copy-v28b.onrender.com/products/';
+
 
 const SingleProduct = () => {
   const { id } = useParams();
