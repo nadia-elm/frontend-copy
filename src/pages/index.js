@@ -6,6 +6,7 @@ import Error from './ErrorPage';
 import Register from './Register';
 import Login from './Login';
 import AuthPage from './AuthPage';
+import Favorites from './Favorites';
 
 export {
   Home,
@@ -16,4 +17,5 @@ export {
   Register,
   Login,
   AuthPage,
+  Favorites,
 };
