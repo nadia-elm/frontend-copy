@@ -40,8 +40,9 @@ function App() {
           <Route path='/about' element={<About />} />
           <Route path='products' element={<Products />} />
           <Route path='/products/:id' element={<SingleProduct />} />
-          <Route path='/auth' element={<AuthPage onLogin={handleLogin} />} />
           <Route path='/favorites' element={<Favorites />} />
+
+          <Route path='/auth' element={<AuthPage onLogin={handleLogin} />} />
 
           <Route path='*' element={<Error />} />
         </Routes>
