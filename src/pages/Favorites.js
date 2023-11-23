@@ -18,7 +18,8 @@ const Favorites = () => {
     const getFavorites = async () => {
       try {
         const result = await axios.get(
-          'http://localhost:3001/users/favorites',
+          // 'http://localhost:3001/users/favorites'
+          'https://backend-copy-v28b.onrender.com/favorites',
           {
             headers: {
               Authorization: `Bearer ${token}`,
@@ -42,7 +43,8 @@ const Favorites = () => {
       return;
     }
     try {
-      await axios.delete('http://localhost:3001/users/favorites', {
+      await axios.delete('https://backend-copy-v28b.onrender.com/favorites',
+ {
         data: { productId },
         headers: { Authorization: `Bearer ${token}` },
       });
