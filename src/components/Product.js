@@ -107,12 +107,9 @@ const Product = ({ image_url, name, price, id }) => {
         <p>{price}</p>
       </footer>
       <button className='favorite-btn' onClick={toggleFavorite}>
-        {isFavorite ? (
-          <FaHeart style={{ color: 'red' }} />
-        ) : (
-          <FaHeart style={{ color: 'grey' }} />
-        )}
+        {isFavorite ? <FaHeart style={{ color: 'red' }} /> : <FaRegHeart />}
       </button>
+      {flashMessage && <div className='flash-message'>{flashMessage}</div>}
     </Wrapper>
   );
 };
