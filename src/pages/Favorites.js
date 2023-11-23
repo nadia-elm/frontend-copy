@@ -18,8 +18,13 @@ const Favorites = () => {
     const getFavorites = async () => {
       try {
         const result = await axios.get(
+<<<<<<< HEAD
           // 'http://localhost:3001/users/favorites',
           `https://backend-copy-v28b.onrender.com/favorites/`,
+=======
+          // 'http://localhost:3001/users/favorites'
+          'https://backend-copy-v28b.onrender.com/favorites',
+>>>>>>> 900a8b03e7230266f93c9990fc8477318c9058b0
           {
             headers: {
               Authorization: `Bearer ${token}`,
@@ -43,6 +48,7 @@ const Favorites = () => {
       return;
     }
     try {
+<<<<<<< HEAD
       await axios.delete(
         '`https://backend-copy-v28b.onrender.com/favorites/`,',
         {
@@ -50,6 +56,13 @@ const Favorites = () => {
           headers: { Authorization: `Bearer ${token}` },
         }
       );
+=======
+      await axios.delete('https://backend-copy-v28b.onrender.com/favorites',
+ {
+        data: { productId },
+        headers: { Authorization: `Bearer ${token}` },
+      });
+>>>>>>> 900a8b03e7230266f93c9990fc8477318c9058b0
       setFavorites(favorites.filter((product) => product.id !== productId));
     } catch (err) {
       console.log(err);
