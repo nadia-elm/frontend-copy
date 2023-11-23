@@ -9,6 +9,7 @@ import axios from 'axios';
 const Product = ({ image_url, name, price, id }) => {
   const [isFavorite, setIsFavorite] = useState(false);
   const { userData, setUserData } = useContext(UserContext);
+  const [flashMessage, setFlashMessage] = useState('');
 
   // fetch user data from token
   const fetchUserData = () => {
@@ -27,16 +28,39 @@ const Product = ({ image_url, name, price, id }) => {
     }
   };
 
+  const checkIfFavorite = async () => {
+    const token = localStorage.getItem('token');
+    if (!token || !userData) return;
+
+    try {
+      const response = await axios.get(
+        // `http://localhost:3001/users/favorites/check/${id}`,
+        `https://backend-copy-v28b.onrender.com/users/favorites/check/${id}`,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+      setIsFavorite(response.data.isFavorite);
+    } catch (error) {
+      console.log('Error checking favorite status:', error);
+    }
+  };
+
   useEffect(() => {
     fetchUserData();
+    checkIfFavorite();
   }, []);
 
   // toggle favorite
   const toggleFavorite = async () => {
-    setIsFavorite((prev) => !prev);
     if (!userData) {
       console.log('not logged in');
-      return; // Return early if no user data
+      setFlashMessage('Please log in to add to favorites');
+      setTimeout(() => setFlashMessage(''), 3000);
+
+      return;
     }
 
     try {
@@ -50,9 +74,17 @@ const Product = ({ image_url, name, price, id }) => {
       console.log(data);
 
       if (isFavorite) {
-        await axios.delete(url, { headers, data });
+        const response = await axios.delete(url, { headers, data });
+        if (response.status === 200) {
+          setIsFavorite(false);
+          console.log('deleted');
+        }
       } else {
-        await axios.post(url, data, { headers });
+        const response = await axios.post(url, data, { headers });
+        if (response.status === 200) {
+          setIsFavorite(true);
+          console.log('added');
+        }
       }
 
       // setIsFavorite((prevIsfavorite) => !prevIsfavorite);

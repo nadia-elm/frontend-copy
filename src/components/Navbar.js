@@ -19,6 +19,11 @@ const links = [
     text: 'products',
     url: '/products',
   },
+  {
+    id: 4,
+    text: 'favorites',
+    url: '/favorites',
+  },
 ];
 
 const Nav = () => {
